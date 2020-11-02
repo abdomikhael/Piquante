@@ -1,4 +1,4 @@
-
+//importer le package HTTPS de node
 const https = require('https');
 const app = require('./app');
 
@@ -13,6 +13,7 @@ const normalizePort = val => {
   }
   return false;
 };
+// utiliser le port 3000 de localhost ou une porte disponible
 const port = normalizePort(process.env.PORT || '3000');
 
 app.set('port', port);
@@ -36,6 +37,7 @@ const errorHandler = error => {
       throw error;
   }
 };
+// utiliser le package https dans le server
 
 const server = https.createServer(app);
 

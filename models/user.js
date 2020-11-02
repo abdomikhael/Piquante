@@ -1,27 +1,11 @@
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
+//créer un model pour l'utilisateur avec un email et un password
+const userSchema = mongoose.Schema({
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true }
+});
 
-module.exports = (req,res,next) => {
-    const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,}$/;
+userSchema.plugin(uniqueValidator);
 
-    if(regexEmail.test(req.body.email)) {
-        if(regexPassword.test(req.body.password)) {
-        	const userSchema = mongoose.Schema({
-
-  			email: { type: String, required: true, unique: true },
-  			password: { type: String, required: true }})
-  			userSchema.plugin(uniqueValidator);
-  			module.exports = mongoose.model('User', userSchema);
-  		} else {
-            res.status(400).json({ message: "Le mot de passe doit comporter au moins 10 caractères, "
-            +"posséder au moins un chiffre, une lettre majuscule et minuscule et l'un des caractères spéciaux suivants: @$!%*?&."});
-        }
-    } else {
-        res.status(400).json({ message: "Le login doit être une adresse email valide !"});
-    }
-}
-;
-
-
-
+module.exports = mongoose.model('User', userSchema);

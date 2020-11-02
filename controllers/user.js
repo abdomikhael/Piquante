@@ -1,7 +1,8 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
+// importer le Token
 const jwt = require('jsonwebtoken');
-
+//le controlleur de la fonction signup
 exports.signup = (req, res, next) => {
   bcrypt.hash(req.body.password, 10)
     .then(hash => {
@@ -17,7 +18,7 @@ exports.signup = (req, res, next) => {
 };
 
 
-
+// le controlleur de la fonction login 
 exports.login = (req, res, next) => {
   User.findOne({ email: req.body.email })
     .then(user => {

@@ -1,6 +1,6 @@
-
+// contant mongoose pour utiliser la méthode schema
 const mongoose = require('mongoose');
-
+// le constant Sauce 
 const sauceSchema = mongoose.Schema({
     userId: {type: String},
     name: {type: String},
@@ -14,5 +14,7 @@ const sauceSchema = mongoose.Schema({
     usersLiked: { type: Array},
     usersDisliked: { type: Array}
 });
+//la méthode Schema mise à disposition par Mongoose. 
+//exporter ce schéma en tant que modèle Mongoose appelé « Sauce », le rendant par là même disponible pour notre application Express. 
 
 module.exports = mongoose.model('Sauce', sauceSchema);
