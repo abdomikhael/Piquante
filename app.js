@@ -1,10 +1,24 @@
+
+const mongoose = require('mongoose');
+
 // utiliser les méthodes express de node
 const express = require('express');
 // parser 
 const bodyParser = require('body-parser');
 
-const mongoose = require('mongoose');
+
 const mongoMask = require('mongo-mask');
+// dotenv 
+require('dotenv').config();
+const db = require('db')
+mongoose.connect(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}`, {
+ useNewUrlParser: true,
+ useUnifiedTopology: true,
+ useCreateIndex: true,
+ useFindAndModify: true
+ })
+.then(() => console.log('Connexion à MongoDB réussie !'))
+  .catch(() => console.log('Connexion à MongoDB échouée !'))
 
 
 
@@ -12,15 +26,6 @@ const userRoutes = require('./routes/user');
 // enregistrer le nouveau routeur dans l'application
 const saucesRoutes = require('./routes/sauces');
 const path = require('path');
-// Connectez l’API au cluster MongoDB avec le userName et le password 
-
-
-mongoose.connect('mongodb+srv://abdo_20:4welGMViepAEHLu4@cluster0.ll4ox.mongodb.net/test?retryWrites=true&w=majority',
-  { useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true})
-  .then(() => console.log('Connexion à MongoDB réussie !'))
-  .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 
 const app = express();
