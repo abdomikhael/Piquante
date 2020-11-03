@@ -1,6 +1,3 @@
-const mongoose = require('mongoose');
-const dotenv= require('dotenv').config();
-mongoose.connect(`${process.env.MONGO_URI}`);
 //importer le package HTTPS de node
 const http = require('http');
 const app = require('./app');

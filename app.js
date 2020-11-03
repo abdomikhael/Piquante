@@ -11,7 +11,7 @@ const mongoMask = require('mongo-mask');
 // dotenv 
 require('dotenv').config();
 const db = require('db')
-mongoose.connect(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}`, {
+mongoose.connect(`mongodb+srv://abdo_20:4welGMViepAEHLu4@cluster0.ll4ox.mongodb.net/test?retryWrites=true&w=majority*`, {
  useNewUrlParser: true,
  useUnifiedTopology: true,
  useCreateIndex: true,
