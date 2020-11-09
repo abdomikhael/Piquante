@@ -11,16 +11,12 @@ const mongoMask = require('mongo-mask');
 // dotenv 
 require('dotenv').config();
 const db = require('db')
-mongoose.connect(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}`, {
- useNewUrlParser: true,
- useUnifiedTopology: true,
- useCreateIndex: true,
- useFindAndModify: true
- })
-.then(() => console.log('Connexion à MongoDB réussie !'))
-  .catch(() => console.log('Connexion à MongoDB échouée !'))
-
-
+mongoose.connect('mongodb+srv://abdo_20:4welGMViepAEHLu4@cluster0.ll4ox.mongodb.net/test?retryWrites=true&w=majority',
+  { useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true})
+  .then(() => console.log('Connexion à MongoDB réussie !'))
+  .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 const userRoutes = require('./routes/user');
 // enregistrer le nouveau routeur dans l'application
